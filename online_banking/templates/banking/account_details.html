@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .card-header {
+            font-size: 1.5rem;
+            background-color: #007bff;
+            color: white;
+        }
+        .transaction-list {
+            list-style: none;
+            padding: 0;
+        }
+        .transaction-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .transaction-list li:last-child {
+            border-bottom: none;
+        }
+        .btn-custom {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Account Details
+            </div>
+            <div class="card-body">
+                <p><strong>Account Number:</strong> {{ account.account_number }}</p>
+                <p><strong>Balance:</strong> ${{ account.balance }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Transactions
+            </div>
+            <div class="card-body">
+                <ul class="transaction-list">
+                    {% for transaction in transactions %}
+                    <li>
+                        <strong>{{ transaction.timestamp }}</strong> - {{ transaction.transaction_type }} - ${{ transaction.amount }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2">
+            <a href="{% url 'make_transaction' %}" class="btn btn-primary btn-custom">Make a Transaction</a>
+            <a href="{% url 'check_balance' %}" class="btn btn-secondary btn-custom">Check Balance</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger btn-custom">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

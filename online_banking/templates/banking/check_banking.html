@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Balance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .balance-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .balance-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .balance-container h1 {
+            margin-bottom: 20px;
+        }
+        .balance-container p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .balance-container .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="balance-container">
+        <h1>Account Balance</h1>
+        <p><strong>Account Number:</strong> {{ account.account_number }}</p>
+        <p><strong>Balance:</strong> ${{ account.balance }}</p>
+        <a href="{% url 'account_details' %}" class="btn btn-primary">Back to Account Details</a>
+        <a href="{% url 'logout' %}" class="btn btn-danger mt-2">Logout</a>
+    </div>
+</body>
+</html>
